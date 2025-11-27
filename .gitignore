@@ -1,0 +1,67 @@
+# ==============================
+# 📌 Node & Backend
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.tmp/
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+logs/*.log
+
+
+# ==============================
+# 📌 Backend specific ignores
+# ==============================
+/backend/node_modules
+/backend/logs
+/backend/.env
+/backend/.cache
+/backend/dist
+/backend/uploads
+/backend/coverage
+
+
+# ==============================
+# 📌 Frontend (React/Vite)
+# ==============================
+/frontend/node_modules
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.production
+/frontend/.env.development
+/frontend/.cache
+/frontend/dist
+frontend/build/
+
+
+# ==============================
+# 📌 OS / Editor / IDE files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# JetBrains / WebStorm
+.idea/
+*.iml
+
+# ==============================
+# 🔥 Optional Extra (recommended)
+# ==============================
+/uploads           # if file upload exists
+/.vercel           # if deploying on vercel
+/.netlify
+/.cursor
