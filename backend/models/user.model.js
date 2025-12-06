@@ -33,7 +33,7 @@ userSchema.methods.generateJWT = function () {
     return jwt.sign(
         { email: this.email, id: this._id },
         process.env.JWT_SECRET,
-        { expiresIn: "7d" }
+        { expiresIn: "1d" }
     );
 };
 
