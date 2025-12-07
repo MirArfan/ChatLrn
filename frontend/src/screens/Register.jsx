@@ -1,7 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from '../config/axios'
 
 const Register = () => {
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+
+
+    const navigate = useNavigate()
+
+
+    function submitHandler(e) {
+
+        e.preventDefault()
+
+        axios.post('/users/register', {
+            email,
+            password
+        }).then((res) => {
+            console.log(res.data)
+            navigate('/')
+        }).catch((err) => {
+            console.log(err.response.data)
+        })
+    }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
       <div className="w-full max-w-md bg-gray-900 rounded-2xl p-8 shadow-2xl border border-gray-800">
@@ -10,11 +33,12 @@ const Register = () => {
           Register 
         </h2>
 
-        <form className="space-y-5">
+        <form onSubmit={submitHandler} className="space-y-5">
           {/* Email */}
           <div>
             <label className="text-gray-300 text-sm">Email</label>
             <input
+            onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Enter your email"
               className="w-full mt-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:border-blue-500"
@@ -25,6 +49,7 @@ const Register = () => {
           <div>
             <label className="text-gray-300 text-sm">Password</label>
             <input
+            onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Enter your password"
               className="w-full mt-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:border-blue-500"

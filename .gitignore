@@ -12,6 +12,10 @@ build/
 .env.local
 .env.*.local
 
+
+features/
+app/
+
 # Logs
 logs
 *.log
