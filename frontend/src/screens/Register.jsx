@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from '../config/axios'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../redux/userSlice'
 
 const Register = () => {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
 
+     const dispatch = useDispatch();
 
     const navigate = useNavigate()
 
@@ -19,6 +22,8 @@ const Register = () => {
             password
         }).then((res) => {
             console.log(res.data)
+             localStorage.setItem('token', res.data.token)
+            dispatch(setUser(res.data.user))
             navigate('/')
         }).catch((err) => {
             console.log(err.response.data)
